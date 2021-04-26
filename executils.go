@@ -91,6 +91,7 @@ func Run(cmd string, options ...OptionFns) error {
 	if cmdOptions.Verbose {
 		fmt.Fprintf(c.Stdout, "Exec: %s\n", strings.Join(c.Args, " "))
 	}
+
 	if err := c.Run(); err != nil {
 		return errors.WithMessagef(err, "Exit code %d", ExitStatus(err))
 	}
