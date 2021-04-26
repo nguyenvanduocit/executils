@@ -43,6 +43,19 @@ func WithStdOut(stdOut io.Writer) OptionFns {
 	}
 }
 
+func WithStdErr(stdErr io.Writer) OptionFns {
+	return func(c *Option) {
+		c.Cmd.Stderr = stdErr
+	}
+}
+
+func WithStdOutOrErr(stdOutOrErr io.Writer) OptionFns {
+	return func(c *Option) {
+		c.Cmd.Stderr = stdOutOrErr
+		c.Cmd.Stdout = stdOutOrErr
+	}
+}
+
 func WithEnv(lines ...string) OptionFns {
 	return func(c *Option) {
 		for _, env := range lines {
