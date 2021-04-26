@@ -49,6 +49,13 @@ func WithStdErr(stdErr io.Writer) OptionFns {
 	}
 }
 
+func WithStdIn(stdIn io.Reader) OptionFns {
+	return func(c *Option) {
+		c.Cmd.Stdin = stdIn
+	}
+}
+
+
 func WithStdOutOrErr(stdOutOrErr io.Writer) OptionFns {
 	return func(c *Option) {
 		c.Cmd.Stderr = stdOutOrErr
